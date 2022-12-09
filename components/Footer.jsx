@@ -23,10 +23,10 @@ const Footer = () => {
   const { theme } = useTheme();
 
   return (
-    <footer className="flexCentre flex-col border-t dark:border-nft-black-1 border-nft-gray-1 sm:py-8 py-16">
+    <footer className="flexCenter flex-col border-t dark:border-nft-black-1 border-nft-gray-1 sm:py-8 py-16">
       <div className=" w-full minmd:w-4/5 flex flex-row md:flex-col sm:px-4 px-16">
         <div className="flexStart flex-1 flex-col">
-          <div className="flexCentre flex cursor-pointer">
+          <div className="flexCenter flex cursor-pointer">
             <Image src={images.logo02} objectFit="contain" width={32} height={32} alt="logo" />
             <p className="dark:text-white text-nft-black-1 font-semibold text-lg ml-1">CryptoKet</p>
           </div>
@@ -51,7 +51,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="flexCentre w-full mt-4 border-t dark:border-nft-black-1 border-nft-gray-1 sm:px-4 px-16">
+      <div className="flexCenter w-full mt-4 border-t dark:border-nft-black-1 border-nft-gray-1 sm:px-4 px-16">
         <div className="flexBetween flex-row w-full minmd:w-4/5 sm:flex-col mt-7">
           <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-base">CryptoKet, Inc.All Rights Reserved.</p>
           <div className="flex flex-row sm:mt-4">

@@ -20,7 +20,7 @@ const MenuItems = ({ isMobile, active, setActive }) => {
   };
 
   return (
-    <ul className={`list-none flex flexCentre flex-row ${isMobile && 'flex-col h-full'}`}>
+    <ul className={`list-none flex flexCenter flex-row ${isMobile && 'flex-col h-full'}`}>
       {['Explore NFTs', 'Listed NFTs', 'My NFTs'].map((item, i) => (
         <li
           key={i}
