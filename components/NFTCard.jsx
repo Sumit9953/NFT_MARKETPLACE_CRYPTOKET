@@ -5,7 +5,7 @@ import Link from 'next/link';
 import images from '../assets';
 
 const NFTCard = ({ nft }) => (
-  <Link href={{ pathname: '/nft-details', query: { nft } }}>
+  <Link href={{ pathname: '/nft-detalis', query: nft }}>
     <div className="flex-1 min-w-215 max-w-max xs:max-w-none sm:w-full sm:min-w-155 minmd:min-w-215
     minlg:min-w-327 dark:bg-nft-black-3 bg-white rounded-2xl p-4 m-4 minlg:m-8 sm:my-2 sm:mx-2 cursor-pointer shadow-md "
     >
