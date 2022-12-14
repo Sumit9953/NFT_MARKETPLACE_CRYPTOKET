@@ -12,7 +12,7 @@ const MenuItems = ({ isMobile, active, setActive }) => {
   const generateLink = (i) => {
     switch (i) {
       case 0: return '/';
-      case 1: return '/created-nft';
+      case 1: return '/listed-nfts';
       case 2: return '/my-nfts';
 
       default:
@@ -42,7 +42,7 @@ const MenuItems = ({ isMobile, active, setActive }) => {
 };
 
 const ButtonGroup = ({ router, setActive }) => {
-  const { connectWallet, currentAccount} = useContext(NFTContext);
+  const { connectWallet, currentAccount } = useContext(NFTContext);
 
   return currentAccount ? (
     <Button
