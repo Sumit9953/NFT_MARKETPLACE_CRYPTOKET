@@ -25,9 +25,15 @@ const PaymentBodyCmp = ({ nft, nftCurrency }) => (
           <p className="font-poppins dark:text-white text-nft-black-1  font-semibold text-sm minlg:text-xl">{nft.name}</p>
         </div>
       </div>
+
       <div>
         <p className="font-poppins dark:text-white text-nft-black-1  font-normal text-sm minlg:text-xl">{nft.price} <span className="font-semibold">{nftCurrency}</span></p>
       </div>
+
+    </div>
+    <div className="flexBetween mt-10">
+      <p className="font-poppins dark:text-white text-nft-black-1  font-normal text-base minlg:text-xl">Total</p>
+      <p className="font-poppins dark:text-white text-nft-black-1  font-normal text-sm minlg:text-xl">{nft.price} <span className="font-semibold">{nftCurrency}</span></p>
     </div>
   </div>
 );
@@ -37,6 +43,7 @@ const NFTDeytails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [nft, setNft] = useState({ image: '', tokenId: '', name: '', owner: '', price: '', seller: '' });
   const router = useRouter();
+  const [paymentModal, setPaymentModal] = useState(false);
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -98,20 +105,34 @@ const NFTDeytails = () => {
               <Button
                 btnName={`Buy for ${nft.price} ${nftCurrency}`}
                 classStyLes="mr-5 sm:mr-0 rounded-xl"
+                handleClick={() => setPaymentModal(true)}
               />
             )}
         </div>
       </div>
+
+      {paymentModal && (
       <Modal
         header="Check Out"
         body={<PaymentBodyCmp nft={nft} nftCurrency={nftCurrency} />}
         footer={(
-          <div>
-            Custom footer
+          <div className="flex flex-row sm:flex-col">
+            <Button
+              btnName="Checkout"
+              classStyLes="mr-5 sm:mb-5 sm:mr-0 rounded-xl"
+              handleClick={() => {}}
+            />
+            <Button
+              btnName="Cancel"
+              classStyLes="mr-5 sm:mr-0 rounded-xl"
+              handleClick={() => setPaymentModal(false)}
+            />
+
           </div>
         )}
-        handleClick={() => {}}
+        handleClose={() => setPaymentModal(false)}
       />
+      )}
     </div>
   );
 };
