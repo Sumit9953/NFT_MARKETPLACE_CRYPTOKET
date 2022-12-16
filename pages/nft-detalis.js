@@ -114,7 +114,7 @@ const NFTDeytails = () => {
                 <Button
                   btnName="List on Marketplace"
                   classStyLes="mr-5 sm:mr-0 sm:mb-5 rounded-xl"
-                  handleClick={() => router.push(`/resell-nft?tokenId=${nft.tokenId}&tokenId=${nft.tokenURI}`)}
+                  handleClick={() => router.push(`/resell-nft?tokenId=${nft.tokenId}&tokenURI=${nft.tokenURI}`)}
                 />
               ) : (
                 <Button
