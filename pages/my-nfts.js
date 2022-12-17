@@ -11,6 +11,7 @@ const MyNFTs = () => {
   const { fetchMyNFTsOrListedNFTs, currentAccount } = useContext(NFTContext);
   const [nfts, setNfts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [activeSelect, setActiveSelect] = useState('Recently Added');
 
   useEffect(() => {
     fetchMyNFTsOrListedNFTs()
@@ -27,6 +28,16 @@ const MyNFTs = () => {
       </div>
     );
   }
+
+  const onHandleSearch = (value) => {
+    const filteredNfts = nfts.filter(({ name }) => name.toLowerCase().includes(value.toLowerCase()));
+
+    if (filteredNfts.length) {
+      setNfts(filteredNfts);
+    } else {
+      // re -show
+    }
+  };
 
   return (
     <div className="w-full flex justify-start items-center flex-col min-h-screen">
@@ -54,7 +65,12 @@ const MyNFTs = () => {
       ) : (
         <div className="sm:px-4 p-12 w-full minmd:w-4/5 flexCenter flex-col">
           <div className="flex-1 w-full flex flex-row sm:flex-col px-4 xs:px-0 minlg:px-8">
-            <SearchBar />
+            <SearchBar
+              activeSelect={activeSelect}
+              setActiveSelect={setActiveSelect}
+              handleSearch={onHandleSearch}
+              // clearSearch={onClearSearch}
+            />
           </div>
           <div className="mt-3 w-full flex flex-wrap">
             {nfts.map((nft) => <NFTCard key={nft.token} nft={nft} onProfilePage />)}
