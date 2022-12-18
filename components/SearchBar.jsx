@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes';
 
 import images from '../assets';
 
-const SearchBar = ({ activeSelect, setActiveSelect, handleSearch }) => {
+const SearchBar = ({ activeSelect, setActiveSelect, handleSearch, clearSearch }) => {
   const [search, setSearch] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState(search);
   const [toggle, setToggle] = useState(false);
@@ -22,7 +22,7 @@ const SearchBar = ({ activeSelect, setActiveSelect, handleSearch }) => {
     if (search) {
       handleSearch(search);
     } else {
-      // ert
+      clearSearch();
     }
   }, [search]);
 
@@ -66,6 +66,8 @@ const SearchBar = ({ activeSelect, setActiveSelect, handleSearch }) => {
             {['Recently added', 'Pruce (low to high)', 'Price (high to low)'].map((item) => (
               <p className="font-poppins dark:text-white text-nft-black-1 font-normal text-xs my-3 cursor-pointer">
                 {item}
+                onClick={() => setActiveSelect(item)}
+                key={item}
               </p>
             ))}
         </div>

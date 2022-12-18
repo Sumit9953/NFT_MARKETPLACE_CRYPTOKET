@@ -10,6 +10,7 @@ import { shortenAddress } from '../utils/shortenAddress';
 const MyNFTs = () => {
   const { fetchMyNFTsOrListedNFTs, currentAccount } = useContext(NFTContext);
   const [nfts, setNfts] = useState([]);
+  const [nftsCopy, setNftsCopy] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [activeSelect, setActiveSelect] = useState('Recently Added');
 
@@ -17,6 +18,7 @@ const MyNFTs = () => {
     fetchMyNFTsOrListedNFTs()
       .then((items) => {
         setNfts(items);
+        setNftsCopy(items);
         setIsLoading(false);
       });
   }, []);
@@ -35,7 +37,13 @@ const MyNFTs = () => {
     if (filteredNfts.length) {
       setNfts(filteredNfts);
     } else {
-      // re -show
+      setNfts(nftsCopy);
+    }
+  };
+
+  const onClearSearch = () => {
+    if (nfts.length && nftsCopy.length) {
+      setNfts(nftsCopy);
     }
   };
 
@@ -58,7 +66,7 @@ const MyNFTs = () => {
           <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-2xl mt-6">{shortenAddress(currentAccount)}</p>
         </div>
       </div>
-      {!isLoading && !nfts.length ? (
+      {!isLoading && !nfts.length && !nftsCopy.length ? (
         <div className="flexCenter sm:p-4 p-16">
           <h1 className="font-poppins dark:text-white text-nft-black-1 font-extrabold text-3xl ">No NFTs Owned</h1>
         </div>
@@ -69,7 +77,7 @@ const MyNFTs = () => {
               activeSelect={activeSelect}
               setActiveSelect={setActiveSelect}
               handleSearch={onHandleSearch}
-              // clearSearch={onClearSearch}
+              clearSearch={onClearSearch}
             />
           </div>
           <div className="mt-3 w-full flex flex-wrap">
