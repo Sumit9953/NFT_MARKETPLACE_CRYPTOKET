@@ -64,7 +64,7 @@ const ButtonGroup = ({ router, setActive }) => {
 };
 
 const checkActive = (active, setActive, router) => {
-  switch (router.pathNam) {
+  switch (router.pathname) {
     case '/':
       if (active !== 'Explore NFTs') setActive('Explore NFTs');
       break;
