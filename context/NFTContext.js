@@ -46,7 +46,7 @@ export const NFTProvider = ({ children }) => {
   const uploadToIPFS = async (file) => {
     try {
       const added = await client.add({ content: file });
-      const url = `https://ipfs.io/ipfs/${added.path}`;
+      const url = `https://sumit.infura-ipfs.io/ipfs/${added.path}`;
       return url;
     } catch (error) {
       console.log(('Error uploading to IPFS', error));
@@ -80,12 +80,13 @@ export const NFTProvider = ({ children }) => {
 
     try {
       const added = await client.add(data);
-      const url = `https://ipfs.io/ipfs/${added.path}`;
+      const url = `https://sumit.infura-ipfs.io/ipfs/${added.path}`;
 
       await createSale(url, price);
 
       router.push('/');
     } catch (error) {
+      console.log(error);
       console.log(('Error uploading to IPFS'));
     }
   };

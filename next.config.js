@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['ipfs.io'],
+    domains: ['sumit.infura-ipfs.io'],
   },
   async rewrites() {
     return [
@@ -12,6 +12,9 @@ const nextConfig = {
         destination: 'https://ipfs.infura.io:5001/api/:path*', // Proxy to Backend
       },
     ];
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 
